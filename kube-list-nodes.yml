@@ -1,0 +1,10 @@
+---
+- name: a play that runs entirely on the ansible host
+  hosts: 127.0.0.1
+  connection: local
+  tasks:
+  - name: Get List of nodes
+    shell: kubectl get nodes
+    register: nodes_list
+
+  - debug: var=nodes_list.stdout_lines
